@@ -1,3 +1,4 @@
+#【热题100】05-最长回文串
 from collections import Counter
 class Solution:
     def longestPalindrome(self, s: str) -> int:
