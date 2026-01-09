@@ -1,3 +1,4 @@
+# 【热题100】03-字符串中的第一个唯一字符
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         char_count = Counter(s)
