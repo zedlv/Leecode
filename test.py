@@ -1,28 +1,22 @@
-from operator import le
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
 class Solution:
-    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        if not matrix:
-            return []
-
-        m = len(matrix)
-        n = len(matrix[0])
-        res = []
-        left,right,top,bottom = 0,n-1,0,m-1;
-        while left<=right and top <=bottom:
-            for i in range(left,right+1):
-                res.append(matrix[top][i])
-            top+=1
-            for i in range(top,bottom+1):
-                res.append(matrix[i][right])
-            right-=1
-            if top<=bottom:
-                for i in range(right,lefe-1,-1):
-                    res.append(matrix[bottom][i])
-                bottom -= 1
-            if left<=right:
-                for i in range(bottom,top-1,-1):
-                    res.append(matrix[i][left])
-                left += 1
-            return res
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root:
+            return None
+        if root == p or root == q:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
+            return root
+        if left:
+            return left
+        if right:
+            return right
+        return None
